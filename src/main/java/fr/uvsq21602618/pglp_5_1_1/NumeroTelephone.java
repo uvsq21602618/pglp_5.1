@@ -78,4 +78,11 @@ public class NumeroTelephone implements Serializable {
     public String getNumero() {
         return numero;
     }
+    /**
+     * Méthode pour recuperer le descriptif ainsi que le numero.
+     * @return le descriptif et le numero
+     */
+    public String toString() {
+        return this.getDescriptif() + ": " + this.getNumero();
+    }
 }

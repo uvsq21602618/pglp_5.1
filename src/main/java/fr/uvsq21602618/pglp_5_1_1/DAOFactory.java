@@ -1,4 +1,7 @@
 package fr.uvsq21602618.pglp_5_1_1;
+
+import java.io.IOException;
+
 /**
  * Classe de la fabrique DAO.
  * @author Nathalie
@@ -7,8 +10,9 @@ public class DAOFactory {
     /**
      * Méthode pour récuperer le DAO de NumeroTelephone.
      * @return le DAO correspondant
+     * @throws IOException 
      */
-    public static DAO<NumeroTelephone> getNumeroTelephoneDAO() {
+    public static DAO<NumeroTelephone> getNumeroTelephoneDAO() throws IOException {
         return new NumeroTelephoneDAO();
     }
     /**

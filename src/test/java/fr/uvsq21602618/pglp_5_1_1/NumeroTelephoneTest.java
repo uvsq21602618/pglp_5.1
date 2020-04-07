@@ -7,13 +7,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.time.LocalDate;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import fr.uvsq21602618.pglp_5_1_1.Personnel.Builder;
 /**
  * Classe de tests pour la classe NumeroTelephone.
  * @author Nathalie

@@ -1,10 +1,22 @@
 package fr.uvsq21602618.pglp_5_1_1;
+
+import java.io.IOException;
+
 /**
  * Classe PersonnelDAO.
  * @author Nathalie
  *
  */
 public class PersonnelDAO extends DAO<Personnel>{
+    /**
+     * Constructeur de PersonnelDAO.
+     * @param id du fichier
+     * @throws IOException
+     */
+    public PersonnelDAO(int id) throws IOException {
+        super(id);
+        // TODO Auto-generated constructor stub
+    }
     /**
      * Méthode de création.
      * @param obj L'objet à créer
