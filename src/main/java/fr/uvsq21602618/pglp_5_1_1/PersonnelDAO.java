@@ -1,5 +1,9 @@
 package fr.uvsq21602618.pglp_5_1_1;
-
+/**
+ * Classe PersonnelDAO.
+ * @author Nathalie
+ *
+ */
 public class PersonnelDAO extends DAO<Personnel>{
     /**
      * Méthode de création.

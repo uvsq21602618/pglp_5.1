@@ -1,5 +1,9 @@
 package fr.uvsq21602618.pglp_5_1_1;
-
+/**
+ * Classe NumerotTelephoneDAO.
+ * @author Nathalie
+ *
+ */
 public class NumeroTelephoneDAO extends DAO<NumeroTelephone> {
     /**
      * Méthode de création.

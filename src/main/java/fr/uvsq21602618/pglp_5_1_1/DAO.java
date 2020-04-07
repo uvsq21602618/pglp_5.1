@@ -1,7 +1,12 @@
 package fr.uvsq21602618.pglp_5_1_1;
 
 import java.sql.Connection;
-
+/**
+ * Classe abstraite de DataAccessObject.
+ * @author Nathalie
+ *
+ * @param <T>
+ */
 public abstract class DAO<T> {
     /**
      * La source de la base de données.
