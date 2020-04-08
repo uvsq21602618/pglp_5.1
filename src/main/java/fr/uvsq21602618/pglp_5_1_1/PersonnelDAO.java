@@ -27,7 +27,27 @@ public class PersonnelDAO extends DAO<Personnel>{
      * @return p
      */
     public void delete(Personnel obj) {
-        ;
+        String nomDir = "NumeroTels";
+        File dir = new File(nomDir);
+        FileOutputStream fileOut;
+        ObjectOutputStream objOut;
+
+        File file = new File(nomDir + "\\" + obj.getId() + ".txt");
+        if (!dir.exists()) {
+            if (dir.mkdir()) {
+                System.out.println("Le dossier est créé!");
+            } else {
+                System.out.println("le dossier n'a pas pu être créé!");
+            }
+        }
+        
+        fileOut = new FileOutputStream(file);
+        objOut = new ObjectOutputStream(fileOut);
+        objOut.writeObject(obj);
+        objOut.close();
+        System.out.println("Le fichier est créé!");
+        
+        return obj;
     }
     /**
      * Méthode de mise à jour.
