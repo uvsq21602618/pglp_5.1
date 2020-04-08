@@ -41,8 +41,6 @@ public class NumeroTelephoneDAO extends DAO<NumeroTelephone> {
         System.out.println("Le fichier est créé!");
         
         return obj;
-
-
     }
     /**
      * Méthode pour effacer.

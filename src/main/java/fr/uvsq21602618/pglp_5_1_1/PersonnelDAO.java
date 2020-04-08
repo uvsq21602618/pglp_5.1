@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 
 /**
  * Classe PersonnelDAO.
@@ -14,20 +15,12 @@ public class PersonnelDAO extends DAO<Personnel>{
     /**
      * Méthode de création.
      * @param obj L'objet à créer
-     * @return p
+     * @return obj l'objet qui vient d'etre creer
+     * @throws IOException Exceptions liees aux entrees/sorties 
      */
     @Override
-    public Personnel create(Personnel obj) {
-        Personnel p = null;
-        return p;
-    }
-    /**
-     * Méthode pour effacer.
-     * @param obj L'objet à effacer
-     * @return p
-     */
-    public void delete(Personnel obj) {
-        String nomDir = "NumeroTels";
+    public Personnel create(Personnel obj) throws IOException {
+        String nomDir = "Personnels";
         File dir = new File(nomDir);
         FileOutputStream fileOut;
         ObjectOutputStream objOut;
@@ -52,18 +45,72 @@ public class PersonnelDAO extends DAO<Personnel>{
     /**
      * Méthode de mise à jour.
      * @param obj L'objet à mettre à jour
+     * @throws IOException Exceptions liees aux entrees/sorties  
      */
-    public Personnel update(Personnel obj) { 
-        Personnel p = null;
-        return p;
+    public Personnel update(Personnel obj) throws IOException { 
+        String nomDir = "Personnels";
+        File dir = new File(nomDir);
+        if(dir.exists()) {
+            File file = new File(nomDir + "\\" + obj.getId() + ".txt");
+            if(file.exists()) {
+                file.delete();
+                obj.maj();
+                this.create(obj);
+            } else {
+                System.out.println("Le fichier à mettre à jour n'existe pas!");
+            }
+        } else {
+            System.out.println("Le dossier contenant le fichier n'existe pas!");
+        }
+        return obj;
+    }
+    /**
+     * Méthode pour effacer.
+     * @param obj L'objet à effacer
+     */
+    public void delete(Personnel obj) {
+        String nomDir = "Personnels";
+        File dir = new File(nomDir);
+        if(dir.exists()) {
+            File file = new File(nomDir + "\\" + obj.getId() + ".txt");
+            if(file.exists()) {
+                file.delete();
+                System.out.println("Le fichier est supprimé!");
+            } else {
+                System.out.println("Le fichier à supprimer n'existe pas!");
+            }
+        } else {
+            System.out.println("Le dossier contenant le fichier n'existe pas!");
+        }
     }
     /**
      * Méthode de recherche des informations.
      * @param id de l'information 
      * @return p
+     * @throws IOException 
+     * @throws ClassNotFoundException 
      */
-    public Personnel find(int id) {
-        Personnel p = null;
-        return p;
+    public Personnel find(int id) throws IOException, ClassNotFoundException {
+        String nomDir = "Personnels";
+        File dir = new File(nomDir);
+        File search = new File(nomDir + "\\" + id + ".txt");
+        Object deserialized = null;
+        
+        if(dir.exists()) {
+            if(search.exists()) {
+                byte[] fileContent = Files.readAllBytes(search.toPath());
+                deserialized = deserialize(fileContent);
+            } else {
+                System.out.println("Le fichier n'existe pas!");
+            }
+            
+            Personnel pers = (Personnel) deserialized;
+            System.out.println(pers.toString());
+    
+            return pers;
+        } else {
+            System.out.println("Le dossier n'existe pas!");
+        }
+        return null;
     }
 }

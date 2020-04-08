@@ -23,6 +23,10 @@ public class GroupePersonnels implements Composant, Serializable {
      */
     private String nomGroupe;
     /**
+     * Id de l'instance.
+     */
+    private int id;
+    /**
      * Constructeur qui créé un groupe de personnels
      * à partir d'un nom.
      * @param nom le nom du groupe de personnels

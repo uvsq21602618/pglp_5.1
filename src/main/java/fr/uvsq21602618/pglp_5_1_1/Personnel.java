@@ -97,6 +97,10 @@ public final class Personnel implements Composant, Serializable {
      */
     private final ArrayList<NumeroTelephone> numTelephones;
     /**
+     * L'id.
+     */
+    private final int id;
+    /**
      * Builder qui permet la construction d'un personnel.
      * @author natha
      *
@@ -119,6 +123,10 @@ public final class Personnel implements Composant, Serializable {
          */
         private final LocalDate dateNaissance;
         /**
+         * Id de l'instance.
+         */
+        private final int id;
+        /**
          * Liste de numéros avec descriptif.
          */
         private final ArrayList<NumeroTelephone> numTelephones;
@@ -128,15 +136,17 @@ public final class Personnel implements Composant, Serializable {
          * @param prm le prenom
          * @param fonc la fonction
          * @param date la date de naissance
+         * @param id2 l'id 
          */
         public Builder(final String nom2, final String prm,
                 final String fonc,
-                final LocalDate date) {
+                final LocalDate date, final int id2) {
             this.nom = nom2;
             this.prenom = prm;
             this.fonction = fonc;
             this.dateNaissance = date;
             this.numTelephones = new ArrayList<NumeroTelephone>();
+            this.id = id2;
         }
 
         /**
@@ -166,6 +176,7 @@ public final class Personnel implements Composant, Serializable {
         fonction = builder.fonction;
         dateNaissance = builder.dateNaissance;
         numTelephones = builder.numTelephones;
+        id = builder.id;
     }
     /**
      * Méthode retourne le nom du personnel.
@@ -203,11 +214,26 @@ public final class Personnel implements Composant, Serializable {
         return numTelephones;
     }
     /**
+     * Retourne l'id de l'instance.
+     * @return l'id
+     */
+    public int getId() {
+        return id;
+    }
+    /**
      * Méthode affiche les informations du personnel.
      */
     public void print() {
         System.out.println(this.nom + " " + this.prenom + ": \nfonction: "
                 + this.fonction + "\ndate de naissance: "
                 + this.dateNaissance + "\n");
+    }
+    
+    /**
+     * La methode pour mettre a jour l'information.
+     * @param obj de reference
+     */
+    public void maj() {
+        ;
     }
 }

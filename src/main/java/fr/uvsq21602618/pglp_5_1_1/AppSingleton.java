@@ -19,26 +19,26 @@ public enum AppSingleton {
         NumeroTelephone portable =
                 new NumeroTelephone("portable", "0651624519", 1);
         Builder b = new Builder("SMITH", "John", "secrétaire",
-                LocalDate.of(1964, 8, 25));
+                LocalDate.of(1964, 8, 25), 1);
         b.numTelephones(portable);
         Personnel secretaire = b.build();
         NumeroTelephone portable2 =
                 new NumeroTelephone("portable", "0651424519", 2);
         Builder b2 = new Builder("WHITE", "Jim", "chef de service",
-                LocalDate.of(1964, 8, 25));
+                LocalDate.of(1964, 8, 25), 2);
         b2.numTelephones(portable2);
         Personnel chefDeService = b2.build();
         NumeroTelephone portable3 =
                 new NumeroTelephone("portable", "0631624519", 3);
         Builder b3 = new Builder("BLACK", "Leah", "employe",
-                LocalDate.of(1964, 8, 15));
+                LocalDate.of(1964, 8, 15), 3);
         b3.numTelephones(portable3);
         Personnel employe = b3.build();
 
         NumeroTelephone portable4 =
                 new NumeroTelephone("portable", "0699624519", 4);
         Builder b4 = new Builder("CASTEL", "Joe", "employe",
-                LocalDate.of(1964, 3, 15));
+                LocalDate.of(1964, 3, 15), 4);
         b4.numTelephones(portable4);
         Personnel employe2 = b4.build();
 
@@ -46,14 +46,14 @@ public enum AppSingleton {
                 new NumeroTelephone("portable", "0611624519", 5);
         Builder b5 = new Builder("MARTIN", "Jack",
                 "chef du departement",
-                LocalDate.of(1954, 8, 25));
+                LocalDate.of(1954, 8, 25), 5);
         b5.numTelephones(portable5);
         Personnel chefDepartement =  b5.build();
 
         NumeroTelephone portable6 =
                 new NumeroTelephone("portable", "0611624919", 5);
         Builder b6 = new Builder("LOGAN", "Max", "chef d'équipe",
-                LocalDate.of(1954, 8, 25));
+                LocalDate.of(1954, 8, 25), 6);
         b6.numTelephones(portable6);
         Personnel chefEquipe = b6.build();
 
