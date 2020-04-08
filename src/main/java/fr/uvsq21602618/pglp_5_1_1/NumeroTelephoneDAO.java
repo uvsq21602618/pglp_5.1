@@ -86,9 +86,9 @@ public class NumeroTelephoneDAO extends DAO<NumeroTelephone> {
     /**
      * Méthode de recherche des informations.
      * @param id de l'information 
-     * @return num du fichier Exception si la classe n'existe pas
+     * @return num numéro de telephone du fichier 
      * @throws IOException Exception liee aux entreés/sorties
-     * @throws ClassNotFoundException 
+     * @throws ClassNotFoundException Exception lié à une classe inexistante
      */
     public NumeroTelephone find(int id) throws IOException, ClassNotFoundException {
         String nomDir = "NumeroTels";

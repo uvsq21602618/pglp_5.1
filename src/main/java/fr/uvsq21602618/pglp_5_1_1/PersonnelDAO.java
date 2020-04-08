@@ -86,9 +86,9 @@ public class PersonnelDAO extends DAO<Personnel>{
     /**
      * Méthode de recherche des informations.
      * @param id de l'information 
-     * @return p
-     * @throws IOException 
-     * @throws ClassNotFoundException 
+     * @return p le personnel du fichier
+     * @throws IOException Exception liee aux entreés/sorties
+     * @throws ClassNotFoundException Exception lié à une classe inexistante
      */
     public Personnel find(int id) throws IOException, ClassNotFoundException {
         String nomDir = "Personnels";
@@ -105,7 +105,7 @@ public class PersonnelDAO extends DAO<Personnel>{
             }
             
             Personnel pers = (Personnel) deserialized;
-            System.out.println(pers.toString());
+            pers.print();
     
             return pers;
         } else {

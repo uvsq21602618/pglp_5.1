@@ -234,6 +234,6 @@ public final class Personnel implements Composant, Serializable {
      * @param obj de reference
      */
     public void maj() {
-        ;
+        System.out.println("La mise a jour a eu lieu!");
     }
 }

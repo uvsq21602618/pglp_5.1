@@ -16,7 +16,7 @@ public enum AppSingleton {
      * Execution du programme.
      */
     public void run() {
-        NumeroTelephone portable =
+        /*NumeroTelephone portable =
                 new NumeroTelephone("portable", "0651624519", 1);
         Builder b = new Builder("SMITH", "John", "secrétaire",
                 LocalDate.of(1964, 8, 25), 1);
@@ -58,17 +58,17 @@ public enum AppSingleton {
         Personnel chefEquipe = b6.build();
 
         GroupePersonnels departement =
-                new GroupePersonnels("Departement");
+                new GroupePersonnels("Departement", 1);
         GroupePersonnels service2 =
-                new GroupePersonnels("Service2");
+                new GroupePersonnels("Service2", 2);
         GroupePersonnels service =
-                new GroupePersonnels("Service");
+                new GroupePersonnels("Service", 3);
         GroupePersonnels equipe1 =
-                new GroupePersonnels("Equipe1");
+                new GroupePersonnels("Equipe1", 4);
         GroupePersonnels equipe2 =
-                new GroupePersonnels("Equipe2");
+                new GroupePersonnels("Equipe2", 5);
         GroupePersonnels equipe3 =
-                new GroupePersonnels("Equipe3");
+                new GroupePersonnels("Equipe3", 6);
 
         service2.add(equipe3);
 
@@ -94,7 +94,7 @@ public enum AppSingleton {
 
         //Departement.print();
 
-        departement.hierarchie();
+        departement.hierarchie();*/
 
     }
     /**

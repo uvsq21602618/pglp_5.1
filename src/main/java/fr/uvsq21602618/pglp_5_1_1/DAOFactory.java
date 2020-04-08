@@ -28,7 +28,7 @@ public class DAOFactory {
      * @return le DAO correspondant
      * @throws IOException Exceptions liees aux entrees/sorties
      */
-    public static DAO<GroupePersonnels> getGroupePersonnels() throws IOException {
+    public static DAO<GroupePersonnels> getGroupePersonnelsDAO() throws IOException {
         return new GroupePersonnelsDAO();
     }
 }

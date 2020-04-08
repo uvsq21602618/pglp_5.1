@@ -123,7 +123,7 @@ public class PersonnelTest {
         Assert.assertEquals(p, deserialized2);
     }
     /**
-     * Test pour verifier si la methode create de NumeroTelephoneDAO fonctionne.
+     * Test pour verifier si la methode create de PersonnelDAO fonctionne.
      * @throws IOException Exception liee aux entrees/sorties
      * @throws ClassNotFoundException Exception si la classe n'existe pas
      */
@@ -147,7 +147,7 @@ public class PersonnelTest {
         dir.delete();
     }
     /**
-     * Test pour verifier si la methode delete de NumeroTelephoneDAO fonctionne.
+     * Test pour verifier si la methode delete de PersonnelDAO fonctionne.
      * @throws IOException Exception liee aux entrees/sorties
      * @throws ClassNotFoundException Exception si la classe n'existe pas
      */
@@ -156,7 +156,7 @@ public class PersonnelTest {
         NumeroTelephone portable =
                 new NumeroTelephone("portable", "0651724519", 2);
         Builder b = new Builder("SMITH", "Jeanne", "secrétaire",
-                LocalDate.of(1964, 5, 25), 1);
+                LocalDate.of(1964, 5, 25), 2);
         b.numTelephones(portable);
         Personnel secretaire2 = b.build();
         
@@ -172,7 +172,7 @@ public class PersonnelTest {
         personnel.delete(secretaire2);
     }
     /**
-     * Test pour verifier si la methode update de NumeroTelephoneDAO fonctionne.
+     * Test pour verifier si la methode update de PersonnelDAO fonctionne.
      * @throws IOException Exception liee aux entrees/sorties
      * @throws ClassNotFoundException Exception si la classe n'existe pas
      */
@@ -187,14 +187,14 @@ public class PersonnelTest {
         byte[] fileContent = Files.readAllBytes(search.toPath());
        
         deserialized = deserialize(fileContent);
-        NumeroTelephone expected = (NumeroTelephone) deserialized;
+        Personnel expected = (Personnel) deserialized;
         
         assertTrue(search.exists());
         assertEquals(expected, secretaire);
         personnel.delete(secretaire);
     }  
     /**
-     * Test pour verifier si la methode find de NumeroTelephoneDAO fonctionne.
+     * Test pour verifier si la methode find de PersonnelDAO fonctionne.
      * @throws IOException Exception liee aux entrees/sorties
      * @throws ClassNotFoundException Exception si la classe n'existe pas
      */

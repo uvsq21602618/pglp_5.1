@@ -31,8 +31,9 @@ public class GroupePersonnels implements Composant, Serializable {
      * à partir d'un nom.
      * @param nom le nom du groupe de personnels
      */
-    public GroupePersonnels(final String nom) {
+    public GroupePersonnels(final String nom, final int id2) {
         this.nomGroupe = nom;
+        this.setId(id2);
     }
     /**
      * Méthode qui récupère le nom du groupe.
@@ -86,17 +87,6 @@ public class GroupePersonnels implements Composant, Serializable {
 
     }
     /**
-     * Méthode de hachage.
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((children == null) ? 0 : children.hashCode());
-        result = prime * result + ((nomGroupe == null) ? 0 : nomGroupe.hashCode());
-        return result;
-    }
-    /**
      * Méthode de comparaison.
      */
     @Override
@@ -119,6 +109,26 @@ public class GroupePersonnels implements Composant, Serializable {
         } else if (!nomGroupe.equals(other.nomGroupe))
             return false;
         return true;
+    }
+    /**
+     * Méthode qui récupère l'id.
+     * @return l'id du groupe
+     */
+    public int getId() {
+        return id;
+    }
+    /**
+     * Méthode qui définit l'id du groupe.
+     * @param id du groupe
+     */
+    public void setId(final int id) {
+        this.id = id;
+    }
+    /**
+     * Méthode pour la mise à jour.
+     */
+    public void maj() {
+       System.out.println("Maj faites!");
     }
 
     

@@ -53,16 +53,4 @@ public abstract class DAO<T> {
         ObjectInputStream o = new ObjectInputStream(b);
         return o.readObject();
     }
-    /**
-     * Méthode de sérialisation.
-     * @param obj L'objet à transformer en flux d'octets.
-     * @return flux d'octets de l'objet.
-     * @throws IOException Exception liee aux entrees/sorties
-     */
-    public byte[] serialize(final Object obj) throws IOException {
-        ByteArrayOutputStream b = new ByteArrayOutputStream();
-        ObjectOutputStream o = new ObjectOutputStream(b);
-        o.writeObject(obj);
-        return b.toByteArray();
-    }
 }

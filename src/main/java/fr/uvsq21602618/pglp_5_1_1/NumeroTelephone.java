@@ -13,17 +13,6 @@ public class NumeroTelephone implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     /**
-     * Méthode de hachage.
-     */
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((descriptif == null) ? 0 : descriptif.hashCode());
-        result = prime * result + ((numero == null) ? 0 : numero.hashCode());
-        return result;
-    }
-    /**
      * Méthode de comparaison.
      */
     @Override
@@ -126,5 +115,6 @@ public class NumeroTelephone implements Serializable {
     public void maj() {
         this.setDescriptif("newDescriptif");
         this.setNumero("newNumero");
+        System.out.println("La mise a jour a eu lieu!");
     }
 }
