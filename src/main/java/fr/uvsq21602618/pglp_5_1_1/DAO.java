@@ -2,13 +2,10 @@ package fr.uvsq21602618.pglp_5_1_1;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.sql.Connection;
 /**
  * Classe abstraite de DataAccessObject.
  * @author Nathalie
@@ -16,21 +13,6 @@ import java.sql.Connection;
  * @param <T>
  */
 public abstract class DAO<T> {
-    
-    protected File f;
-    protected FileOutputStream fileOut;
-    protected ObjectOutputStream objOut;
-    /**
-     * Constructeur de DAO.
-     * @param id du fichier.
-     * @throws IOException Exceptions liées aux entrées/sorties
-     */
-    public DAO(int id) throws IOException{
-        f = new File(id + ".txt");
-        fileOut = new FileOutputStream(f);
-        objOut = new ObjectOutputStream(fileOut);
-    }
-    
     /**
      * Méthode de création.
      * @param obj L'objet à créer

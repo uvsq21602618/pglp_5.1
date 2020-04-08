@@ -1,6 +1,15 @@
 package fr.uvsq21602618.pglp_5_1_1;
 
+import java.io.IOException;
+
 public class GroupePersonnelsDAO extends DAO<GroupePersonnels> {
+    /**
+     * Constructeur de GroupePersonnelsDAO.
+     * @throws IOException Exceptions liees aux entrees/sorties
+     */
+    public GroupePersonnelsDAO() throws IOException {
+        super();
+    }
     /**
      * Méthode de création.
      * @param obj L'objet à créer

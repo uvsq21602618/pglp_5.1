@@ -1,6 +1,9 @@
 package fr.uvsq21602618.pglp_5_1_1;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 /**
  * Classe PersonnelDAO.
@@ -10,12 +13,14 @@ import java.io.IOException;
 public class PersonnelDAO extends DAO<Personnel>{
     /**
      * Constructeur de PersonnelDAO.
-     * @param id du fichier
      * @throws IOException
      */
-    public PersonnelDAO(int id) throws IOException {
-        super(id);
-        // TODO Auto-generated constructor stub
+    public PersonnelDAO() throws IOException {
+        super();
+        this.name = "Personnels";
+        f = new File(name + ".txt");      
+        fileOut = new FileOutputStream(f);
+        objOut = new ObjectOutputStream(fileOut);
     }
     /**
      * Méthode de création.

@@ -10,7 +10,7 @@ public class DAOFactory {
     /**
      * Méthode pour récuperer le DAO de NumeroTelephone.
      * @return le DAO correspondant
-     * @throws IOException 
+     * @throws IOException Exceptions liees aux entrees/sorties
      */
     public static DAO<NumeroTelephone> getNumeroTelephoneDAO() throws IOException {
         return new NumeroTelephoneDAO();
@@ -18,15 +18,17 @@ public class DAOFactory {
     /**
      * Méthode pour récuperer le DAO de Personnel.
      * @return le DAO correspondant
+     * @throws IOException Exceptions liees aux entrees/sorties
      */
-    public static DAO<Personnel> getPersonnelDAO() {
+    public static DAO<Personnel> getPersonnelDAO() throws IOException {
         return new PersonnelDAO();
     }
     /**
      * Méthode pour récuperer le DAO de GroupePersonnels.
      * @return le DAO correspondant
+     * @throws IOException Exceptions liees aux entrees/sorties
      */
-    public static DAO<GroupePersonnels> getGroupePersonnels() {
+    public static DAO<GroupePersonnels> getGroupePersonnels() throws IOException {
         return new GroupePersonnelsDAO();
     }
 }

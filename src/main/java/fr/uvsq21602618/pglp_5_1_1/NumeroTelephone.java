@@ -56,13 +56,19 @@ public class NumeroTelephone implements Serializable {
      */
     private final String numero;
     /**
+     * Le numero d'id du telephone;
+     */
+    private int id;
+    /**
      * Le constructeur du numéro de téléphone.
      * @param desc la description du numéro (fixe, portable ...)
      * @param num le numéro de téléphones
+     * @param id2 l'id du numero
      */
-    public NumeroTelephone(final String desc, final String num) {
+    public NumeroTelephone(final String desc, final String num, final int id2) {
         this.descriptif = desc;
         this.numero = num;
+        this.setId(id2);
     }
     /**
      * Méthode pour récupérer le descriptif du numéro.
@@ -84,5 +90,19 @@ public class NumeroTelephone implements Serializable {
      */
     public String toString() {
         return this.getDescriptif() + ": " + this.getNumero();
+    }
+    /**
+     * Méthode pour récupérer l'id du telephone.
+     * @return int l'id
+     */
+    public int getId() {
+        return id;
+    }
+    /**
+     * Méthode pour definir l'id du telephone.
+     * @param id du telephone
+     */
+    public void setId(int id) {
+        this.id = id;
     }
 }

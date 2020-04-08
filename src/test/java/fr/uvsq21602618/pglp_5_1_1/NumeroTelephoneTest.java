@@ -1,12 +1,15 @@
 package fr.uvsq21602618.pglp_5_1_1;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +28,7 @@ public class NumeroTelephoneTest {
      */
     @Before
     public void setUp() {
-        tel = new NumeroTelephone("fixe", "0167874973");
+        tel = new NumeroTelephone("fixe", "0167874973", 2);
     }
     /**
      * Teste le méthode getDescriptif.
@@ -40,7 +43,7 @@ public class NumeroTelephoneTest {
      */
     @Test
     public void getNumeroTest() {
-        NumeroTelephone tel = new NumeroTelephone("fixe", "0167874973");
+        NumeroTelephone tel = new NumeroTelephone("fixe", "0167874973", 2);
         String expected = "0167874973";
         assertEquals(expected, tel.getNumero());
     }
@@ -70,7 +73,7 @@ public class NumeroTelephoneTest {
     }
     /**
      * Tests sur la transformation dans les deux sens.
-     * @throws IOException Exception liee aux entreés/sorties
+     * @throws IOException Exception liee aux entrees/sorties
      * @throws ClassNotFoundException Exception si la classe n'existe pas
      */
     @Test
@@ -84,4 +87,51 @@ public class NumeroTelephoneTest {
         Assert.assertEquals(tel, deserialized1);
         Assert.assertEquals(tel, deserialized2);
     }
+    /**
+     * Test pour verifier si la methode create de NumeroTelephoneDAO fonctionne.
+     * @throws IOException Exception liee aux entrees/sorties
+     * @throws ClassNotFoundException Exception si la classe n'existe pas
+     */
+    @Test
+    public void createTest() throws IOException, ClassNotFoundException {
+        String nomDir = "NumeroTels";
+        File dir = new File(nomDir);
+
+        DAO<NumeroTelephone> numTel = DAOFactory.getNumeroTelephoneDAO();
+        numTel.create(tel);
+        
+        File search = new File(nomDir + "\\" + tel.getId() + ".txt");
+        Object deserialized = null;
+        
+        byte[] fileContent = Files.readAllBytes(search.toPath());
+       
+        deserialized = deserialize(fileContent);
+        NumeroTelephone expected = (NumeroTelephone) deserialized;
+        
+        assertTrue(dir.exists());
+        assertTrue(search.exists());
+        assertEquals(expected, tel);
+        
+        numTel.delete(tel);
+    }
+    /**
+     * Test pour verifier si la methode delete de NumeroTelephoneDAO fonctionne.
+     * @throws IOException Exception liee aux entrees/sorties
+     * @throws ClassNotFoundException Exception si la classe n'existe pas
+     *
+    @Test
+    public void deleteTest() throws IOException, ClassNotFoundException {
+        int id, id2; 
+        id = 5;
+        id2 = 6;
+        File search = new File("NumTels.txt");
+        
+        DAO<NumeroTelephone> numTel = DAOFactory.getNumeroTelephoneDAO();
+        DAO<NumeroTelephone> numTel2 = DAOFactory.getNumeroTelephoneDAO(i);
+        numTel.create(tel);
+        numTel2.create(tel);
+        numTel.delete(tel);
+        numTel2.delete(tel);
+        assertTrue(!search.exists());
+    }*/
 }
