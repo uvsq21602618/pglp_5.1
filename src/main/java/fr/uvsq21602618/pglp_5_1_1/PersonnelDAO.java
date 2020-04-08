@@ -11,15 +11,15 @@ import java.nio.file.Files;
  * @author Nathalie
  *
  */
-public class PersonnelDAO extends DAO<Personnel>{
+public class PersonnelDAO extends DAO<Personnel> {
     /**
      * Méthode de création.
      * @param obj L'objet à créer
      * @return obj l'objet qui vient d'etre creer
-     * @throws IOException Exceptions liees aux entrees/sorties 
+     * @throws IOException Exceptions liees aux entrees/sorties
      */
     @Override
-    public Personnel create(Personnel obj) throws IOException {
+    public Personnel create(final Personnel obj) throws IOException {
         String nomDir = "Personnels";
         File dir = new File(nomDir);
         FileOutputStream fileOut;
@@ -33,26 +33,26 @@ public class PersonnelDAO extends DAO<Personnel>{
                 System.out.println("le dossier n'a pas pu être créé!");
             }
         }
-        
         fileOut = new FileOutputStream(file);
         objOut = new ObjectOutputStream(fileOut);
         objOut.writeObject(obj);
         objOut.close();
         System.out.println("Le fichier est créé!");
-        
         return obj;
     }
     /**
      * Méthode de mise à jour.
      * @param obj L'objet à mettre à jour
-     * @throws IOException Exceptions liees aux entrees/sorties  
+     * @throws IOException Exceptions liees aux entrees/sorties
+     * @return obj
      */
-    public Personnel update(Personnel obj) throws IOException { 
+    public Personnel update(final Personnel obj)
+            throws IOException {
         String nomDir = "Personnels";
         File dir = new File(nomDir);
-        if(dir.exists()) {
+        if (dir.exists()) {
             File file = new File(nomDir + "\\" + obj.getId() + ".txt");
-            if(file.exists()) {
+            if (file.exists()) {
                 file.delete();
                 obj.maj();
                 this.create(obj);
@@ -68,45 +68,44 @@ public class PersonnelDAO extends DAO<Personnel>{
      * Méthode pour effacer.
      * @param obj L'objet à effacer
      */
-    public void delete(Personnel obj) {
+    public void delete(final Personnel obj) {
         String nomDir = "Personnels";
         File dir = new File(nomDir);
-        if(dir.exists()) {
+        if (dir.exists()) {
             File file = new File(nomDir + "\\" + obj.getId() + ".txt");
-            if(file.exists()) {
+            if (file.exists()) {
                 file.delete();
                 System.out.println("Le fichier est supprimé!");
             } else {
                 System.out.println("Le fichier à supprimer n'existe pas!");
             }
         } else {
-            System.out.println("Le dossier contenant le fichier n'existe pas!");
+            System.out.println("Le dossier contenant"
+                    + " le fichier n'existe pas!");
         }
     }
     /**
      * Méthode de recherche des informations.
-     * @param id de l'information 
+     * @param id de l'information
      * @return p le personnel du fichier
      * @throws IOException Exception liee aux entreés/sorties
      * @throws ClassNotFoundException Exception lié à une classe inexistante
      */
-    public Personnel find(int id) throws IOException, ClassNotFoundException {
+    public Personnel find(final int id)
+            throws IOException, ClassNotFoundException {
         String nomDir = "Personnels";
         File dir = new File(nomDir);
         File search = new File(nomDir + "\\" + id + ".txt");
         Object deserialized = null;
-        
-        if(dir.exists()) {
-            if(search.exists()) {
+        if (dir.exists()) {
+            if (search.exists()) {
                 byte[] fileContent = Files.readAllBytes(search.toPath());
                 deserialized = deserialize(fileContent);
             } else {
                 System.out.println("Le fichier n'existe pas!");
             }
-            
             Personnel pers = (Personnel) deserialized;
             pers.print();
-    
             return pers;
         } else {
             System.out.println("Le dossier n'existe pas!");

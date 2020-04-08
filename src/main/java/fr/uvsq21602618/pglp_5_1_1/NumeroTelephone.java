@@ -9,32 +9,53 @@ import java.io.Serializable;
  */
 public class NumeroTelephone implements Serializable {
     /**
-     * SerialVersion
+     * SerialVersion.
      */
     private static final long serialVersionUID = 1L;
     /**
      * Méthode de comparaison.
      */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         NumeroTelephone other = (NumeroTelephone) obj;
         if (descriptif == null) {
-            if (other.descriptif != null)
+            if (other.descriptif != null) {
                 return false;
-        } else if (!descriptif.equals(other.descriptif))
+            }
+        } else if (!descriptif.equals(other.descriptif)) {
             return false;
+        }
         if (numero == null) {
-            if (other.numero != null)
+            if (other.numero != null) {
                 return false;
-        } else if (!numero.equals(other.numero))
+            }
+        } else if (!numero.equals(other.numero)) {
             return false;
+        }
         return true;
+    }
+    /**
+     * Méthode de hachage.
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((descriptif == null) ? 0 : descriptif.hashCode());
+        result = prime * result + id;
+        result = prime * result
+                + ((numero == null) ? 0 : numero.hashCode());
+        return result;
     }
     /**
      * Le type de numéro (fixe, portable...).
@@ -45,7 +66,7 @@ public class NumeroTelephone implements Serializable {
      */
     private String numero;
     /**
-     * Le numero d'id du telephone;
+     * Le numero d'id du telephone.
      */
     private int id;
     /**
@@ -103,14 +124,13 @@ public class NumeroTelephone implements Serializable {
     }
     /**
      * Méthode pour definir l'id du telephone.
-     * @param id du telephone
+     * @param id2 du telephone
      */
-    public void setId(int id) {
-        this.id = id;
+    public void setId(final int id2) {
+        this.id = id2;
     }
     /**
      * La methode pour mettre a jour l'information.
-     * @param obj de reference
      */
     public void maj() {
         this.setDescriptif("newDescriptif");

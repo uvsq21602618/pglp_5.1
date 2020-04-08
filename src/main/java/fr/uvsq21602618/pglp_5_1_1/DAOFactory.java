@@ -1,18 +1,24 @@
 package fr.uvsq21602618.pglp_5_1_1;
 
 import java.io.IOException;
-
 /**
  * Classe de la fabrique DAO.
  * @author Nathalie
  */
-public class DAOFactory {
+public final class DAOFactory {
+    /**
+     * Constructeur.
+     */
+    private DAOFactory() {
+        throw new IllegalStateException("Utility class");
+      }
     /**
      * Méthode pour récuperer le DAO de NumeroTelephone.
      * @return le DAO correspondant
      * @throws IOException Exceptions liees aux entrees/sorties
      */
-    public static DAO<NumeroTelephone> getNumeroTelephoneDAO() throws IOException {
+    public static DAO<NumeroTelephone> getNumeroTelephoneDAO()
+            throws IOException {
         return new NumeroTelephoneDAO();
     }
     /**
@@ -28,7 +34,8 @@ public class DAOFactory {
      * @return le DAO correspondant
      * @throws IOException Exceptions liees aux entrees/sorties
      */
-    public static DAO<GroupePersonnels> getGroupePersonnelsDAO() throws IOException {
+    public static DAO<GroupePersonnels> getGroupePersonnelsDAO()
+            throws IOException {
         return new GroupePersonnelsDAO();
     }
 }

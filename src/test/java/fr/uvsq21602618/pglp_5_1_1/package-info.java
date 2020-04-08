@@ -1,5 +1,5 @@
 /**
- * Package concentrant les codes du programme.
+ * Package concentrant les codes tests du programme.
  * Personnel, GroupePersonnel et Composant
  */
 package fr.uvsq21602618.pglp_5_1_1;

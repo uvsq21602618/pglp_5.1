@@ -23,7 +23,7 @@ public class GroupePersonnelsTest {
     /**
      * Instances de GroupePersonnels.
      */
-    GroupePersonnels g, g2, g3;
+     GroupePersonnels g, g2, g3;
     /**
      * Instance du dossier contenant les fichiers objets.
      */

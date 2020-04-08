@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class GroupePersonnels implements Composant, Serializable {
     /**
-     * SerialVersion
+     * SerialVersion.
      */
     private static final long serialVersionUID = 1L;
     /**
@@ -30,6 +30,7 @@ public class GroupePersonnels implements Composant, Serializable {
      * Constructeur qui créé un groupe de personnels
      * à partir d'un nom.
      * @param nom le nom du groupe de personnels
+     * @param id2 l'id du groupe
      */
     public GroupePersonnels(final String nom, final int id2) {
         this.nomGroupe = nom;
@@ -90,25 +91,46 @@ public class GroupePersonnels implements Composant, Serializable {
      * Méthode de comparaison.
      */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
+    public boolean equals(final Object obj) {
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         GroupePersonnels other = (GroupePersonnels) obj;
         if (children == null) {
-            if (other.children != null)
+            if (other.children != null) {
                 return false;
-        } else if (!children.equals(other.children))
+            }
+        } else if (!children.equals(other.children)) {
             return false;
+        }
         if (nomGroupe == null) {
-            if (other.nomGroupe != null)
+            if (other.nomGroupe != null) {
                 return false;
-        } else if (!nomGroupe.equals(other.nomGroupe))
+            }
+        } else if (!nomGroupe.equals(other.nomGroupe)) {
             return false;
+        }
         return true;
+    }
+    /**
+     * Méthode de hachage.
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((children == null) ? 0 : children.hashCode());
+        result = prime * result + id;
+        result = prime * result
+                + ((nomGroupe == null) ? 0 : nomGroupe.hashCode());
+        return result;
     }
     /**
      * Méthode qui récupère l'id.
@@ -119,10 +141,10 @@ public class GroupePersonnels implements Composant, Serializable {
     }
     /**
      * Méthode qui définit l'id du groupe.
-     * @param id du groupe
+     * @param id2 du groupe
      */
-    public void setId(final int id) {
-        this.id = id;
+    public void setId(final int id2) {
+        this.id = id2;
     }
     /**
      * Méthode pour la mise à jour.
@@ -130,7 +152,4 @@ public class GroupePersonnels implements Composant, Serializable {
     public void maj() {
        System.out.println("Maj faites!");
     }
-
-    
-
 }

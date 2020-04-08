@@ -1,8 +1,8 @@
 package fr.uvsq21602618.pglp_5_1_1;
 
-import java.time.LocalDate;
+//import java.time.LocalDate;
 
-import fr.uvsq21602618.pglp_5_1_1.Personnel.Builder;
+//import fr.uvsq21602618.pglp_5_1_1.Personnel.Builder;
 /**
  * Singleton contenant le main.
  * @author Nathalie
@@ -99,9 +99,9 @@ public enum AppSingleton {
     }
     /**
      * Main.
+     * @param args pour le main
      */
-    public static void main(String args[]) {
+    public static void main(final String[] args) {
         ENVIRONNEMENT.run();
     }
-
 }

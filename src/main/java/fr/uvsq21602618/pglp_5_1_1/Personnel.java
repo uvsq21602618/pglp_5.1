@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public final class Personnel implements Composant, Serializable {
     /**
-     * SerialVersion
+     * SerialVersion.
      */
     private static final long serialVersionUID = 1L;
     /**
@@ -22,24 +22,29 @@ public final class Personnel implements Composant, Serializable {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((dateNaissance == null) ? 0 : dateNaissance.hashCode());
-        result = prime * result + ((fonction == null) ? 0 : fonction.hashCode());
-        result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-        result = prime * result + ((numTelephones == null) ? 0 : numTelephones.hashCode());
-        result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
+        result = prime * result
+                + ((dateNaissance == null) ? 0 : dateNaissance.hashCode());
+        result = prime * result
+                + ((fonction == null) ? 0 : fonction.hashCode());
+        result = prime * result
+                + ((nom == null) ? 0 : nom.hashCode());
+        result = prime * result
+                + ((numTelephones == null) ? 0 : numTelephones.hashCode());
+        result = prime * result
+                + ((prenom == null) ? 0 : prenom.hashCode());
         return result;
     }
     /**
      * Méthode de comparaison.
      */
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(final Object obj) {
         if (this == obj) {
             return true;
         }
         if (obj == null) {
             return false;
-        }      
+        }
         if (getClass() != obj.getClass()) {
             return false;
         }
@@ -47,8 +52,8 @@ public final class Personnel implements Composant, Serializable {
         if (dateNaissance == null) {
             if (other.dateNaissance != null) {
                 return false;
-            }        
-        } else if (!dateNaissance.equals(other.dateNaissance)) {       
+            }
+        } else if (!dateNaissance.equals(other.dateNaissance)) {
             return false;
         }
         if (fonction == null) {
@@ -59,21 +64,26 @@ public final class Personnel implements Composant, Serializable {
             return false;
         }
         if (nom == null) {
-            if (other.nom != null)
+            if (other.nom != null) {
                 return false;
-        } else if (!nom.equals(other.nom))
+            }
+        } else if (!nom.equals(other.nom)) {
             return false;
+        }
         if (numTelephones == null) {
             if (other.numTelephones != null) {
                 return false;
             }
-        } else if (!numTelephones.equals(other.numTelephones))
+        } else if (!numTelephones.equals(other.numTelephones)) {
             return false;
+        }
         if (prenom == null) {
-            if (other.prenom != null)
+            if (other.prenom != null) {
                 return false;
-        } else if (!prenom.equals(other.prenom))
+            }
+        } else if (!prenom.equals(other.prenom)) {
             return false;
+        }
         return true;
     }
     /**
@@ -136,7 +146,7 @@ public final class Personnel implements Composant, Serializable {
          * @param prm le prenom
          * @param fonc la fonction
          * @param date la date de naissance
-         * @param id2 l'id 
+         * @param id2 l'id
          */
         public Builder(final String nom2, final String prm,
                 final String fonc,
@@ -148,7 +158,6 @@ public final class Personnel implements Composant, Serializable {
             this.numTelephones = new ArrayList<NumeroTelephone>();
             this.id = id2;
         }
-
         /**
          * Ajoute un numéro de téléphone.
          * @param num le numéro et descriptif
@@ -228,10 +237,8 @@ public final class Personnel implements Composant, Serializable {
                 + this.fonction + "\ndate de naissance: "
                 + this.dateNaissance + "\n");
     }
-    
     /**
      * La methode pour mettre a jour l'information.
-     * @param obj de reference
      */
     public void maj() {
         System.out.println("La mise a jour a eu lieu!");
