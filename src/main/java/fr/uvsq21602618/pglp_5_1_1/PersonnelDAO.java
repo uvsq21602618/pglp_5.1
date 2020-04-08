@@ -12,17 +12,6 @@ import java.io.ObjectOutputStream;
  */
 public class PersonnelDAO extends DAO<Personnel>{
     /**
-     * Constructeur de PersonnelDAO.
-     * @throws IOException
-     */
-    public PersonnelDAO() throws IOException {
-        super();
-        this.name = "Personnels";
-        f = new File(name + ".txt");      
-        fileOut = new FileOutputStream(f);
-        objOut = new ObjectOutputStream(fileOut);
-    }
-    /**
      * Méthode de création.
      * @param obj L'objet à créer
      * @return p

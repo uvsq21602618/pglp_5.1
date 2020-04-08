@@ -24,11 +24,29 @@ public class NumeroTelephoneTest {
      */
     NumeroTelephone tel;
     /**
+     * Instance du dossier contenant les fichiers objets.
+     */
+    File dir;
+    /**
+     * Le DAO des NumeroTelephoneDAO.
+     */
+    DAO<NumeroTelephone> numTel;
+    /**
+     * Le nom du dossier contenant les fichiers 
+     * liés aux numeroTelephone.
+     */
+    String nomDir;
+    /**
      * Initialisation des instances pour les tests.
+     * @throws IOException Exception liee aux entreés/sorties
      */
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
+        nomDir = "NumeroTels";
+        dir = new File(nomDir);
+        
         tel = new NumeroTelephone("fixe", "0167874973", 2);
+        numTel = DAOFactory.getNumeroTelephoneDAO();
     }
     /**
      * Teste le méthode getDescriptif.
@@ -43,7 +61,6 @@ public class NumeroTelephoneTest {
      */
     @Test
     public void getNumeroTest() {
-        NumeroTelephone tel = new NumeroTelephone("fixe", "0167874973", 2);
         String expected = "0167874973";
         assertEquals(expected, tel.getNumero());
     }
@@ -93,11 +110,7 @@ public class NumeroTelephoneTest {
      * @throws ClassNotFoundException Exception si la classe n'existe pas
      */
     @Test
-    public void createTest() throws IOException, ClassNotFoundException {
-        String nomDir = "NumeroTels";
-        File dir = new File(nomDir);
-
-        DAO<NumeroTelephone> numTel = DAOFactory.getNumeroTelephoneDAO();
+    public void createTest() throws IOException, ClassNotFoundException {       
         numTel.create(tel);
         
         File search = new File(nomDir + "\\" + tel.getId() + ".txt");
@@ -113,25 +126,65 @@ public class NumeroTelephoneTest {
         assertEquals(expected, tel);
         
         numTel.delete(tel);
+        dir.delete();
     }
     /**
      * Test pour verifier si la methode delete de NumeroTelephoneDAO fonctionne.
      * @throws IOException Exception liee aux entrees/sorties
      * @throws ClassNotFoundException Exception si la classe n'existe pas
-     *
+     */
     @Test
-    public void deleteTest() throws IOException, ClassNotFoundException {
-        int id, id2; 
-        id = 5;
-        id2 = 6;
-        File search = new File("NumTels.txt");
-        
-        DAO<NumeroTelephone> numTel = DAOFactory.getNumeroTelephoneDAO();
-        DAO<NumeroTelephone> numTel2 = DAOFactory.getNumeroTelephoneDAO(i);
+    public void deleteTest() throws IOException, ClassNotFoundException {      
+        NumeroTelephone tel2 = new NumeroTelephone("fixe", "0167874963", 3);
+        File search = new File(nomDir + "\\" + tel.getId() + ".txt");
+        File expected = new File(nomDir + "\\" + tel2.getId() + ".txt");  
+
         numTel.create(tel);
-        numTel2.create(tel);
+        numTel.create(tel2);
         numTel.delete(tel);
-        numTel2.delete(tel);
+        
         assertTrue(!search.exists());
-    }*/
+        assertTrue(expected.exists());
+        numTel.delete(tel2);
+    }
+    /**
+     * Test pour verifier si la methode update de NumeroTelephoneDAO fonctionne.
+     * @throws IOException Exception liee aux entrees/sorties
+     * @throws ClassNotFoundException Exception si la classe n'existe pas
+     */
+    @Test
+    public void updateTest() throws IOException, ClassNotFoundException {      
+        File search = new File(nomDir + "\\" + tel.getId() + ".txt");
+        NumeroTelephone tel2 = new NumeroTelephone("newDescriptif", "newNumero", 2);
+
+        numTel.create(tel);
+        numTel.update(tel);
+        Object deserialized = null;
+        
+        byte[] fileContent = Files.readAllBytes(search.toPath());
+       
+        deserialized = deserialize(fileContent);
+        NumeroTelephone expected = (NumeroTelephone) deserialized;
+        
+        assertTrue(search.exists());
+        assertEquals(expected, tel2);
+        numTel.delete(tel);
+    }  
+    /**
+     * Test pour verifier si la methode find de NumeroTelephoneDAO fonctionne.
+     * @throws IOException Exception liee aux entrees/sorties
+     * @throws ClassNotFoundException Exception si la classe n'existe pas
+     */
+    @Test
+    public void findTest() throws IOException, ClassNotFoundException {      
+        File search = new File(nomDir + "\\" + tel.getId() + ".txt");
+        NumeroTelephone expected;
+        numTel.create(tel);
+        
+        expected = numTel.find(2);
+        
+        assertTrue(search.exists());
+        assertEquals(expected, tel);
+        numTel.delete(tel);
+    }
 }

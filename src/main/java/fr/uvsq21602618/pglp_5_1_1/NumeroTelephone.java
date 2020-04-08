@@ -50,11 +50,11 @@ public class NumeroTelephone implements Serializable {
     /**
      * Le type de numéro (fixe, portable...).
      */
-    private final String descriptif;
+    private String descriptif;
     /**
      * Le numéro en lui-même avec des chiffres.
      */
-    private final String numero;
+    private String numero;
     /**
      * Le numero d'id du telephone;
      */
@@ -78,11 +78,25 @@ public class NumeroTelephone implements Serializable {
         return descriptif;
     }
     /**
+     * Méthode pour definir le descriptif du telephone.
+     * @param desc le descriptif du telephone
+     */
+    public void setDescriptif(final String desc) {
+        this.descriptif = desc;
+    }
+    /**
      * Méthode pour récupérer le numéro de téléphone.
      * @return string le numéro
      */
     public String getNumero() {
         return numero;
+    }
+    /**
+     * Méthode pour definir le numero du telephone.
+     * @param num le numero du telephone
+     */
+    public void setNumero(final String num) {
+        this.numero = num;
     }
     /**
      * Méthode pour recuperer le descriptif ainsi que le numero.
@@ -104,5 +118,13 @@ public class NumeroTelephone implements Serializable {
      */
     public void setId(int id) {
         this.id = id;
+    }
+    /**
+     * La methode pour mettre a jour l'information.
+     * @param obj de reference
+     */
+    public void maj() {
+        this.setDescriptif("newDescriptif");
+        this.setNumero("newNumero");
     }
 }
